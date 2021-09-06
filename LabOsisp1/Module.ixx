@@ -13,7 +13,7 @@ static TCHAR szWindowClass[] = _T("DesktopApp");
 static TCHAR szTitle[] = _T("lab1");
 HINSTANCE hInst;
 HDC hDC, hCompatibleDC;
-//HANDLE hBitmap;
+
 // Forward declarations of functions included in this code module:
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
@@ -55,17 +55,7 @@ int WINAPI WinMain(
     // Store instance handle in our global variable
     hInst = hInstance;
 
-    // The parameters to CreateWindowEx explained:
-    // WS_EX_OVERLAPPEDWINDOW : An optional extended window style.
-    // szWindowClass: the name of the application
-    // szTitle: the text that appears in the title bar
-    // WS_OVERLAPPEDWINDOW: the type of window to create
-    // CW_USEDEFAULT, CW_USEDEFAULT: initial position (x, y)
-    // 500, 100: initial size (width, length)
-    // NULL: the parent of this window
-    // NULL: this application does not have a menu bar
-    // hInstance: the first parameter from WinMain
-    // NULL: not used in this application
+    
     HWND hWnd = CreateWindowEx(WS_EX_COMPOSITED,szWindowClass,szTitle,WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX,CW_USEDEFAULT, CW_USEDEFAULT,1000, 500, NULL,NULL,hInstance,NULL);
     //hBitmap = LoadImage(NULL, L"Image.bmp", IMAGE_BITMAP, 100, 100, LR_LOADFROMFILE);
     if (!hWnd)
@@ -110,7 +100,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
 
     case WM_CREATE: {
-
+        
                 break;
     }
     case WM_MOUSEWHEEL: {
@@ -282,7 +272,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     case WM_PAINT:{               
                     
-            hBitmap = (HBITMAP)LoadImage(NULL, L"Image.bmp", IMAGE_BITMAP, 100, 100, LR_LOADFROMFILE);
+        hBitmap = (HBITMAP)LoadImage(NULL, L"Image.bmp", IMAGE_BITMAP, 100, 100, LR_LOADFROMFILE);
             GetObject(hBitmap, sizeof(BITMAP), NULL);
             hDC = BeginPaint(hWnd, &ps);
             hCompatibleDC = CreateCompatibleDC(hDC);
